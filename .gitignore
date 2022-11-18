@@ -1,0 +1,7 @@
+mysql/data/*
+!mysql/data/.gitkeep
+uploads/*
+!uploads/.gitkeep
+.env*
+!*.example
+
