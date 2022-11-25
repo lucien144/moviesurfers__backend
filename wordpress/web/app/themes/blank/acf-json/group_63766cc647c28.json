@@ -1,0 +1,160 @@
+{
+    "key": "group_63766cc647c28",
+    "title": "Další nastavení",
+    "fields": [
+        {
+            "key": "field_63766cc622cfa",
+            "label": "Hodnocení",
+            "name": "rating",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "0": "0",
+                "0.5": "0.5",
+                "1": "1",
+                "1.5": "1.5",
+                "2": "2",
+                "2.5": "2.5",
+                "3": "3",
+                "3.5": "3.5",
+                "4": "4",
+                "4.5": "4.5",
+                "5": "5"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6377e6c2bafed",
+            "label": "Youtube ID",
+            "name": "youtube_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6381366564d06",
+            "label": "Hodnocení ostatních",
+            "name": "rating_others",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_6381377754f5b",
+            "button_label": "Přidat hodnocení",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6381377754f5b",
+                    "label": "Uživatel",
+                    "name": "user",
+                    "aria-label": "",
+                    "type": "user",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "role": "",
+                    "return_format": "array",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "parent_repeater": "field_6381366564d06"
+                },
+                {
+                    "key": "field_6381373164d08",
+                    "label": "Hodnocení",
+                    "name": "rating",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "0": "0",
+                        "0.5": "0.5",
+                        "1": "1",
+                        "1.5": "1.5",
+                        "2": "2",
+                        "2.5": "2.5",
+                        "3": "3",
+                        "3.5": "3.5",
+                        "4": "4",
+                        "4.5": "4.5",
+                        "5": "5"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_6381366564d06"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "modified": 1669413159
+}
