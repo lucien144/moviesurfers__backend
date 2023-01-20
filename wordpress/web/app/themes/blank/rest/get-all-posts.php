@@ -1,5 +1,8 @@
 <?php
 add_filter('rest_prepare_post', 'get_all_posts', 10, 3);
+add_filter('rest_prepare_posters', 'get_all_posts', 10, 3);
+add_filter('rest_prepare_gossips', 'get_all_posts', 10, 3);
+
 function get_all_posts($data, $singlePost, $context)
 {
 	$_data = $data->data;
@@ -7,8 +10,8 @@ function get_all_posts($data, $singlePost, $context)
 	// Remove rendered prop
 	$_data['title'] = html_entity_decode($data->data['title']['rendered']);
 	$_data['title_share'] = urlencode(html_entity_decode($data->data['title']['rendered']));
-	$_data['content'] = $data->data['content']['rendered'];
-	$_data['excerpt'] = strip_tags($data->data['excerpt']['rendered']);
+	$_data['content'] = $data->data['content']['rendered'] ?? '';
+	$_data['excerpt'] = strip_tags($data->data['excerpt']['rendered'] ?? '');
 
 	if ($data->data['featured_media']) {
 		$media = get_post($data->data['featured_media']);
@@ -20,7 +23,8 @@ function get_all_posts($data, $singlePost, $context)
 	}
 
 	// Load categories
-	foreach ($data->data['categories'] as $categoryId) {
+	$categories = [];
+	foreach ($data->data['categories'] ?? [] as $categoryId) {
 		$category = get_term($categoryId);
 		$categories[] = [
 			'id' => $categoryId,
@@ -55,7 +59,6 @@ function get_all_posts($data, $singlePost, $context)
 			'link',
 			'comment_status',
 			'ping_status',
-			'sticky',
 			'template',
 			'format',
 			'meta',

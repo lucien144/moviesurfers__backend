@@ -6,18 +6,15 @@ register_nav_menu('primary', 'Site Menu');
 // Turn on featured images
 add_theme_support('post-thumbnails');
 
+//add_theme_support( 'post-formats', ['image']);
+
 // ACF
 $libs = [
-//	'/acf/expose-all.php',
-//	'/acf/seo.php',
-//	'/acf/custom-locations.php',
-//	'/acf/filter-links.php',
+	'/types/posters.type.php',
+	'/types/gossips.type.php',
 
 	'/filters/custom-permalinks.php',
 	'/filters/preview-link.php',
-//	'/filters/imgproxy.php',
-
-//	'/actions/posts-to-news.php',
 
 	'/rest/endpoint-menu.php',
 	'/rest/endpoint-frontpage.php',
