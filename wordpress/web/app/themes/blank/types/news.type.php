@@ -1,9 +1,9 @@
 <?php
-function post_type_gossips()
+function post_type_news()
 {
 	$labels = [
-		'name'          => 'Drby', // Plural name
-		'singular_name' => 'Drby'   // Singular name
+		'name'          => 'Aktuálně', // Plural name
+		'singular_name' => 'Aktualita'   // Singular name
 	];
 
 	$supports = [
@@ -20,9 +20,9 @@ function post_type_gossips()
 
 	$args = [
 		'labels'              => $labels,
-		'description'         => 'Filmové plakáty', // Description
+		'description'         => 'Novinky z Hollywoodu', // Description
 		'supports'            => $supports,
-		'taxonomies'          => ['post_tag'], // Allowed taxonomies
+		//'taxonomies'          => ['topics'], // Allowed taxonomies
 		'hierarchical'        => FALSE, // Allows hierarchical categorization, if set to false, the Custom Post Type will behave like Post, else it will behave like Page
 		'public'              => TRUE,  // Makes the post type public
 		'show_ui'             => TRUE,  // Displays an interface for this post type
@@ -31,7 +31,7 @@ function post_type_gossips()
 		'show_in_nav_menus'   => TRUE,  // Displays in Appearance -> Menus
 		'show_in_admin_bar'   => TRUE,  // Displays in the black admin bar
 		'menu_position'       => 6,     // The position number in the left menu
-		'menu_icon'           => 'dashicons-twitter',  // The URL for the icon used for this post type
+		'menu_icon'           => 'dashicons-clock',  // The URL for the icon used for this post type
 		'can_export'          => TRUE,  // Allows content export using Tools -> Export
 		'has_archive'         => FALSE,  // Enables post type archive (by month, date, or year)
 		'exclude_from_search' => FALSE, // Excludes posts of this type in the front-end search result page if set to true, include them if set to false
@@ -39,7 +39,15 @@ function post_type_gossips()
 		'capability_type'     => 'post' // Allows read, edit, delete like “Post”
 	];
 
-	register_post_type('gossips', $args); //Create a post type with the slug is ‘product’ and arguments in $args.
+	register_post_type('news', $args); //Create a post type with the slug is ‘product’ and arguments in $args.
+
+    register_taxonomy( 'categories', ['news'], [
+            'hierarchical' => true,
+            'label' => 'Categories',
+            'singular_label' => 'Category',
+            'show_in_rest' => true,
+        ]
+    );
 }
 
-add_action('init', 'post_type_gossips');
+add_action('init', 'post_type_news');

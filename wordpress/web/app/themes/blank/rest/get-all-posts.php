@@ -2,6 +2,7 @@
 add_filter('rest_prepare_post', 'get_all_posts', 10, 3);
 add_filter('rest_prepare_posters', 'get_all_posts', 10, 3);
 add_filter('rest_prepare_gossips', 'get_all_posts', 10, 3);
+add_filter('rest_prepare_news', 'get_all_posts', 10, 3);
 
 function get_all_posts($data, $singlePost, $context)
 {
@@ -22,17 +23,20 @@ function get_all_posts($data, $singlePost, $context)
 		}
 	}
 
-	// Load categories
-	$categories = [];
-	foreach ($data->data['categories'] ?? [] as $categoryId) {
-		$category = get_term($categoryId);
-		$categories[] = [
-			'id' => $categoryId,
-			'title' => $category->name,
-			'slug'  => $category->slug,
-		];
+	// Load terms
+	$terms = ['categories', 'tags'];
+	foreach ($terms as $term) {
+		$items = [];
+		foreach ($data->data[$term] ?? [] as $itemId) {
+			$item = get_term($itemId);
+			$items[] = [
+				'id' => $itemId,
+				'title' => $item->name,
+				'slug'  => $item->slug,
+			];
+		}
+		$_data[$term] = $items;
 	}
-	$_data['categories'] = $categories;
 
 	// Load attachments
 	$attachments = array_values(get_attached_media('image', $data->data['id']));
@@ -50,7 +54,6 @@ function get_all_posts($data, $singlePost, $context)
 	// Cleanup
 	$_data = array_filter($_data, function ($key) {
 		return !in_array($key, [
-			'tags',
 			'guid',
 			'modified',
 			'modified_gmt',

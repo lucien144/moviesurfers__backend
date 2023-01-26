@@ -11,7 +11,7 @@ add_theme_support('post-thumbnails');
 // ACF
 $libs = [
 	'/types/posters.type.php',
-	'/types/gossips.type.php',
+	'/types/news.type.php',
 
 	'/filters/custom-permalinks.php',
 	'/filters/preview-link.php',
